@@ -14,12 +14,16 @@ struct WeatherData: Unboxable {
 
     let lat: Double
     let long: Double
+    let windSpeed: Double
+    let fahrenheit: Double
 
     // MARK: - Initialization
 
     init(unboxer: Unboxer) throws {
         self.lat = try unboxer.unbox(key: "latitude")
         self.long = try unboxer.unbox(key: "longitude")
+        self.windSpeed = try unboxer.unbox(keyPath: "currently.windSpeed")
+        self.fahrenheit = try unboxer.unbox(keyPath: "currently.temperature")
     }
 
 }
