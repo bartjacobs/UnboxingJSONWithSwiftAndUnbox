@@ -16,6 +16,7 @@ struct WeatherData: Unboxable {
     let long: Double
     let windSpeed: Double
     let fahrenheit: Double
+    let hourlyDataPoints: [WeatherDataPoint]
 
     // MARK: - Initialization
 
@@ -24,6 +25,7 @@ struct WeatherData: Unboxable {
         self.long = try unboxer.unbox(key: "longitude")
         self.windSpeed = try unboxer.unbox(keyPath: "currently.windSpeed")
         self.fahrenheit = try unboxer.unbox(keyPath: "currently.temperature")
+        self.hourlyDataPoints = try unboxer.unbox(keyPath: "hourly.data")
     }
 
 }
