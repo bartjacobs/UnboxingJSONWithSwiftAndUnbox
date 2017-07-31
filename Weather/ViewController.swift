@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Unbox
 
 class ViewController: UIViewController {
 
@@ -46,8 +47,15 @@ class ViewController: UIViewController {
     }
 
     private func processWeatherData(_ data: Data) {
-        if let dataAsString = String(data: data, encoding: String.Encoding.utf8) {
-            print(dataAsString)
+        do {
+            // Create Weather Data
+            let weatherData: WeatherData = try unbox(data: data)
+
+            print(weatherData.lat)
+            print(weatherData.long)
+
+        } catch {
+            print("Unable to Unbox Response Due to Error (\(error))")
         }
     }
 
