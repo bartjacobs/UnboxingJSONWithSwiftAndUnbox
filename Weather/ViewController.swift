@@ -56,6 +56,10 @@ class ViewController: UIViewController {
             print(weatherData.windSpeed)
             print(weatherData.fahrenheit)
 
+            for dataPoint in weatherData.hourlyDataPoints {
+                print(dataPoint.fahrenheit)
+            }
+
         } catch {
             print("Unable to Unbox Response Due to Error (\(error))")
         }
